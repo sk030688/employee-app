@@ -5,5 +5,5 @@ global:
 scrape_configs:
   - job_name: 'employee-app'
     static_configs:
-      - targets: ['host.docker.internal:9090']
+      - targets: ['192.168.1.93:9090']
     metrics_path: '/actuator/prometheus'
