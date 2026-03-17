@@ -4,7 +4,7 @@ pipeline {
     environment {
         APP_NAME         = 'employee-app'
         OPENSHIFT_SERVER = 'https://api.rm3.7wse.p1.openshiftapps.com:6443'
-        OC_PROJECT       = 'sabbavaraputsatishkum-dev'
+        OC_PROJECT       = 'sabbavarapusatishkum-dev'
         SONAR_URL        = 'http://192.168.1.93:9000'
         IMAGE_TAG        = "v${BUILD_NUMBER}"
         GIT_REPO         = 'https://github.com/sk030688/employee-app.git'
