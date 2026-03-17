@@ -3,7 +3,31 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
+
+  # Local app on laptop (keeping as is)
   - job_name: 'employee-app'
     static_configs:
       - targets: ['192.168.1.93:9090']
     metrics_path: '/actuator/prometheus'
+
+  # DEV on OpenShift
+  - job_name: 'employee-app-dev'
+    static_configs:
+      - targets: ['employee-app-dev-sabbavarapusatishkum-dev.apps.rm3.7wse.p1.openshiftapps.com:80']
+    metrics_path: '/actuator/prometheus'
+    scheme: http
+
+  # TEST on OpenShift
+  - job_name: 'employee-app-test'
+    static_configs:
+      - targets: ['employee-app-test-sabbavarapusatishkum-dev.apps.rm3.7wse.p1.openshiftapps.com:80']
+    metrics_path: '/actuator/prometheus'
+    scheme: http
+
+  # PROD on OpenShift
+  - job_name: 'employee-app-prod'
+    static_configs:
+      - targets: ['employee-app-prod-sabbavarapusatishkum-dev.apps.rm3.7wse.p1.openshiftapps.com:80']
+    metrics_path: '/actuator/prometheus'
+    scheme: http
+
