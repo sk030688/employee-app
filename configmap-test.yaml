@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  employee-config-test
+  namespace:  sabbavarapusatishkum-dev
+  labels:
+    app: employee-app
+    environment: test
+data:
+  APP_ENV: "testing"
+  LOG_LEVEL: "INFO"
+  APP_VERSION: "1.0.0"
+  APP_MESSAGE: "Welcome To Test Environment"
+  MAX_CONNECTIONS: "20"
