@@ -7,7 +7,7 @@ scrape_configs:
   # Local app on laptop (keeping as is)
   - job_name: 'employee-app'
     static_configs:
-      - targets: ['192.168.1.4:9090']
+      - targets: ['192.168.1.2:9090']
     metrics_path: '/actuator/prometheus'
 
   # DEV on OpenShift
