@@ -1,0 +1,30 @@
+# This is Rahul's job description
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer-role
+  namespace: sabbavarapusatishkum-dev
+rules:
+  # CAN read pods and their logs
+  - apiGroups: [""]
+    resources: ["pods", "pods/log"]
+    verbs: ["get", "list", "watch"]
+
+  # CAN read deployments
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch"]
+
+  # CAN read services and routes
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["get", "list"]
+
+  # CAN read configmaps
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list"]
+
+  # CANNOT read secrets (not listed = not allowed!)
+  # CANNOT delete anything (delete not listed!)
+  # CANNOT create anything (create not listed!)
