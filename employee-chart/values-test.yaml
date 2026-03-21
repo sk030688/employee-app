@@ -1,0 +1,24 @@
+# TEST specific values
+
+environment: testing
+replicaCount: 1
+
+config:
+  APP_ENV: "testing"
+  LOG_LEVEL: "INFO"
+  APP_MESSAGE: "Welcome to TEST"
+  MAX_CONNECTIONS: "20"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  cpuUtilization: 70
