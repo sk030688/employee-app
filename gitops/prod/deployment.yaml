@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-app-gitops-prod
+  namespace: sabbavarapusatishkum-dev
+  labels:
+    app: employee-app
+    env: prod
+    managed-by: argocd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: employee-app-gitops-prod
+  template:
+    metadata:
+      labels:
+        app: employee-app-gitops-prod
+    spec:
+      containers:
+      - name: employee-app
+        image: image-registry.openshift-image-registry.svc:5000/sabbavarapusatishkum-dev/employee-app:latest
+        ports:
+        - containerPort: 9090
+        env:
+        - name: APP_ENV
+          value: "production"
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "1000m"
+            memory: "512Mi"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 9090
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 9090
+          initialDelaySeconds: 30
+          periodSeconds: 5

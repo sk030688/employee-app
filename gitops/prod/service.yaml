@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: employee-app-gitops-prod
+  namespace: sabbavarapusatishkum-dev
+spec:
+  selector:
+    app: employee-app-gitops-prod
+  ports:
+  - port: 9090
+    targetPort: 9090
+    name: 9090-tcp
+  type: ClusterIP

@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: employee-app-gitops-prod
+  namespace: sabbavarapusatishkum-dev
+spec:
+  to:
+    kind: Service
+    name: employee-app-gitops-prod
+  port:
+    targetPort: 9090-tcp
