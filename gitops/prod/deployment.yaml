@@ -8,7 +8,7 @@ metadata:
     env: prod
     managed-by: argocd
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: employee-app-gitops-prod
